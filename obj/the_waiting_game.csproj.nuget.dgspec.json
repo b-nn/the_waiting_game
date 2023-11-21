@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/bananann/All_Projects/the_waiting_game copy/the_waiting_game.csproj": {}
+  },
+  "projects": {
+    "/home/bananann/All_Projects/the_waiting_game copy/the_waiting_game.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/bananann/All_Projects/the_waiting_game copy/the_waiting_game.csproj",
+        "projectName": "the_waiting_game",
+        "projectPath": "/home/bananann/All_Projects/the_waiting_game copy/the_waiting_game.csproj",
+        "packagesPath": "/home/bananann/.nuget/packages/",
+        "outputPath": "/home/bananann/All_Projects/the_waiting_game copy/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/home/bananann/.local/share/godot/mono/GodotNuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/bananann/.nuget/NuGet/NuGet.Config",
+          "/home/bananann/.nuget/NuGet/config/Godot.Offline.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "SpriteFontPlus": {
+              "target": "Package",
+              "version": "[0.9.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.125/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

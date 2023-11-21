@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/button_inactive.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/center_button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/corner_button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/cursor.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/edge_button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/main_menu_button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/options_button.png</File>
+    <File>/home/bananann/All_Projects/the_waiting_game copy/Content/slider_blip.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

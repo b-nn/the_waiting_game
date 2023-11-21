@@ -1,0 +1,76 @@
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/the_waiting_game
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/the_waiting_game.deps.json
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/the_waiting_game.runtimeconfig.json
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/ref/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/the_waiting_game.pdb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/MonoGame.Framework.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/linux-x64/native/libSDL2-2.0.so.0
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/linux-x64/native/libopenal.so.1
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/osx/native/libSDL2.dylib
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/osx/native/libopenal.1.dylib
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/win-x64/native/SDL2.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/win-x64/native/soft_oal.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/win-x86/native/SDL2.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/runtimes/win-x86/native/soft_oal.dll
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.csproj.AssemblyReference.cache
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.GeneratedMSBuildEditorConfig.editorconfig
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.AssemblyInfoInputs.cache
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.AssemblyInfo.cs
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.csproj.CoreCompileInputs.cache
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.csproj.CopyComplete
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/ref/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.pdb
+/home/bananann/All_Projects/the_waiting_game/obj/Debug/net6.0/the_waiting_game.genruntimeconfig.cache
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Cyotek.Drawing.BitmapFont.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/SpriteFontPlus.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/StbImageSharp.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/StbTrueTypeSharp.dll
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/button_inactive.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/center_button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/corner_button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/cursor.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/edge_button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/main_menu_button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/options_button.xnb
+/home/bananann/All_Projects/the_waiting_game/bin/Debug/net6.0/Content/slider_blip.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/button_inactive.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/center_button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/corner_button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/cursor.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/edge_button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/main_menu_button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/options_button.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Content/slider_blip.xnb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/the_waiting_game
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/the_waiting_game.deps.json
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/the_waiting_game.runtimeconfig.json
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/ref/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/the_waiting_game.pdb
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/Cyotek.Drawing.BitmapFont.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/MonoGame.Framework.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/SpriteFontPlus.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/StbImageSharp.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/StbTrueTypeSharp.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/linux-x64/native/libSDL2-2.0.so.0
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/linux-x64/native/libopenal.so.1
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/osx/native/libSDL2.dylib
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/osx/native/libopenal.1.dylib
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/win-x64/native/SDL2.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/win-x64/native/soft_oal.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/win-x86/native/SDL2.dll
+/home/bananann/All_Projects/the_waiting_game copy/bin/Debug/net6.0/runtimes/win-x86/native/soft_oal.dll
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.csproj.AssemblyReference.cache
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.GeneratedMSBuildEditorConfig.editorconfig
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.AssemblyInfoInputs.cache
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.AssemblyInfo.cs
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.csproj.CoreCompileInputs.cache
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.csproj.CopyComplete
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/ref/the_waiting_game.dll
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.pdb
+/home/bananann/All_Projects/the_waiting_game copy/obj/Debug/net6.0/the_waiting_game.genruntimeconfig.cache
