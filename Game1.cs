@@ -15,7 +15,7 @@ using BreakInfinity;
 
 namespace the_waiting_game;
 
-public class Game1 : Game //test
+public class Game1 : Game 
 {
     public static string scene = "time";
     private GraphicsDeviceManager _graphics;
