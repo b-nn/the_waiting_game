@@ -55,10 +55,12 @@ namespace Global
                 }
                 else {
                     value = value / 31556926;
-                    return($"{value.ToString("G2").ToLowerInvariant()}y");
+                    return($"{value.ToString("G2").ToLowerInvariant().Replace("+","")}y");
                 }
                 case 1:
-                    return($"{value.ToString("G2").ToLowerInvariant()}");
+                    return($"{value.ToString("G2").ToLowerInvariant().Replace("+","")}");
+                case 2:
+                    return($"{value}");
             }
             return("PLEASE DEFINE TYPE");
         }

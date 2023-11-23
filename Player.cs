@@ -13,17 +13,20 @@ namespace Player
         public static double BaseTime = 1;
         public static double WaitCurrency;
         public static BigDouble Time = 0; // Expressed in seconds
-        public static double Scale = 0;
-        public static double Deltons = 0;
+        public static BigDouble MaxTime = 0;
+        public static BigDouble Scale = 0;
+        public static BigDouble MaxScale = 0;
+        public static BigDouble Deltons = 0;
         public static int DeltonCap = 100;
         public static double DeltonCapModifier = 0;
         public static BigDouble BaseTimePerSeconds = 1;
         public static BigDouble TotalTimePerSeconds;
         public static List<double> Multipliers = new List<double>();
-        public static BigDouble Flips = 30;
+        public static BigDouble Flips = 70;
+        public static BigDouble MaxFlips = 0;
         public static Double[] Generators = {0, 0, 0, 0};
         public static double[] GeneratorEfficiencies = {0.2,0.2,0.2,0.2};
-        public static bool[] FlipUpgrades = {false, false, false, false, false, false, false, false};
+        public static bool[] FlipUpgrades = {false, false, false, false, false, false, false, false, false, true, false, true};
         public static double TimeSinceFlip;
     }
 }

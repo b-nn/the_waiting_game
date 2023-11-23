@@ -15,7 +15,7 @@ using BreakInfinity;
 
 namespace the_waiting_game;
 
-public class Game1 : Game // test
+public class Game1 : Game
 {
     public static string scene = "time";
     private GraphicsDeviceManager _graphics;
@@ -24,11 +24,16 @@ public class Game1 : Game // test
     public static List<button> time_buttons;
     public static List<button> flip_buttons;
     public static List<button> delton_buttons;
+    public static List<button> scale_buttons;
     public static List<menu_button> menu_buttons;
     public double menu_switch_delay;
     public double menu_scroll_delay;
     public double menu_scroll_position;
-    public slider Slider;
+    public slider mouse_slider;
+    public slider scale_slider;
+    public slider flip_slider;
+    public static double flip_effect = 1;
+    public static double scale_effect = 1;
     public static void prestige() {
         player.WaitCurrency = 0;
         player.Time = player.BaseTime;
@@ -91,14 +96,21 @@ public class Game1 : Game // test
             new button(7,1,7,"masstime",new Vector2(2,45), true, "flips", 1),
             new button(1,1,8,"baseaccel",new Vector2(2,65), true, "flips", 1),
             new button(1,1,9,"basestart",new Vector2(2,85), true, "flips", 1),
-            new button(1,1,10,"autobuy",new Vector2(2,105), true, "flips", 1),
-            new button(15,1,11,"unlockdelton",new Vector2(2,125), true, "flips", 1),
-            new button(1,1,12,"freeprice",new Vector2(2,145), true, "flips", 1)
+            new button(1,1,10,"autobuy",new Vector2(222,25), false, "flips", 1),
+            new button(15,1,11,"unlockdelton",new Vector2(222,45), false, "flips", 1),
+            new button(1,1,12,"freeprice",new Vector2(222,65), false, "flips", 1),
+            new button(25,1,15,"unlockscale",new Vector2(222,85), false, "flips", 1)
+        };
+
+        scale_buttons = new List<button>() {
+            new button(30,1,18,"::gengen",new Vector2(2,25), true, "scale", 1)
         };
 
         delton_buttons = new List<button>() {
             new button(3.1556926e+17,1,13,"timecap",new Vector2(2,25), true, "time", 1),
-            new button(20,1,14,"flipcap",new Vector2(2,45), true, "flips", 1)
+            new button(20,1,14,"flipcap",new Vector2(2,45), true, "flips", 1),
+            new button(20,1,17,"scalecap",new Vector2(2,65), true, "scale", 1),
+            new button(250,1,16,"maxcap",new Vector2(2,85), true, "deltons", 1)
         };
 
         menu_buttons = new List<menu_button>() {
@@ -109,7 +121,9 @@ public class Game1 : Game // test
             new menu_button("options", 4)
         };
         
-        Slider = new slider(0, new Vector2(2,22), "mouse size: ", 2, 10);
+        mouse_slider = new slider(0, new Vector2(2,22), "mouse size: ", 2, 10);
+        flip_slider = new slider(1, new Vector2(2,105), "flip effect: ", 0, 100);
+        scale_slider = new slider(2, new Vector2(2,105), "scale effect: ", 0, 100);
 
         base.Initialize();
         
@@ -134,6 +148,9 @@ public class Game1 : Game // test
         if(player.Time < 0) {
             player.Time = 0;
         }
+
+        flip_effect = flip_slider.value / 100;
+        scale_effect = scale_slider.value / 100;
         
         player.TimeSinceFlip += dt;
         player.Time += player.TotalTimePerSeconds * dt;
@@ -148,8 +165,8 @@ public class Game1 : Game // test
         foreach(float mutliplier in player.Multipliers) {
             player.TotalTimePerSeconds *= mutliplier;
         }
-        player.TotalTimePerSeconds *= (BigDouble.Pow(3,player.Flips));
-        player.TotalTimePerSeconds /= (BigDouble.Pow(5,player.Scale));
+        player.TotalTimePerSeconds *= (BigDouble.Pow(3,player.Flips * flip_effect));
+        player.TotalTimePerSeconds /= (BigDouble.Pow(3,player.Scale * scale_effect));
 
         for(int i = 0; i < player.FlipUpgrades.Length; i++){
             if(!player.FlipUpgrades[i]) {
@@ -172,27 +189,37 @@ public class Game1 : Game // test
                         }
                     }
                     continue;
+                case 8:
+                    player.Scale = BigDouble.Log((player.Time/(int)G.conversions.year),5) / BigDouble.Pow(1.5,player.Flips * flip_effect);
+                    continue;
+                case 11:
+                    player.Generators[3] += BigDouble.Log2(player.Scale * scale_effect) < 0 ? 0 : BigDouble.Log2(player.Scale * scale_effect) * dt;
+                    continue;
                     
             }
         }
 
         player.DeltonCapModifier = 0;
-        player.DeltonCapModifier += player.FlipUpgrades[6] ? BigDouble.Log2(player.Time) : 0;
-        player.DeltonCapModifier += player.FlipUpgrades[7] ? player.Flips.ToDouble() : 0;
+        player.MaxScale = !player.FlipUpgrades[9] ? player.Scale : player.Scale > player.MaxScale ? player.Scale : player.MaxScale;
+        player.MaxTime = !player.FlipUpgrades[9] ? player.Time : player.Time > player.MaxTime ? player.Time : player.MaxTime;
+        player.MaxFlips = !player.FlipUpgrades[9] ? player.Flips : player.Flips > player.MaxFlips ? player.Flips : player.MaxFlips;
+        player.DeltonCapModifier += player.FlipUpgrades[6] ? BigDouble.Log2(player.MaxTime) : 0;
+        player.DeltonCapModifier += player.FlipUpgrades[7] ? player.MaxFlips.ToDouble() : 0;
+        player.DeltonCapModifier += player.FlipUpgrades[10] ? player.MaxScale.ToDouble() : 0;
 
         if(player.Deltons < 100 + player.DeltonCapModifier) {
             player.Deltons += player.Deltons * dt;
         }
         else {
-            player.Deltons += (player.Deltons / Math.Pow(1.05,player.Deltons-(100 + player.DeltonCapModifier))) * dt;
+            player.Deltons += (player.Deltons / BigDouble.Pow(1.05,player.Deltons-(100 + player.DeltonCapModifier))) * dt;
         }
 
         for(int i = 0; i < 4; i++) {
             if(i == 0) {
-                player.WaitCurrency += player.Generators[i] * player.GeneratorEfficiencies[0] * Math.Log10(player.Deltons < 10 ? 10 : player.Deltons) * dt;
+                player.WaitCurrency += player.Generators[i] * player.GeneratorEfficiencies[0] * BigDouble.Log10(player.Deltons < 10 ? 10 : player.Deltons) * dt;
             }
             else {
-                player.Generators[i-1] += player.Generators[i] * player.GeneratorEfficiencies[i] * Math.Log10(player.Deltons < 10 ? 10 : player.Deltons) * dt;
+                player.Generators[i-1] += player.Generators[i] * player.GeneratorEfficiencies[i] * BigDouble.Log10(player.Deltons < 10 ? 10 : player.Deltons) * dt;
             }
         }
 
@@ -227,6 +254,12 @@ public class Game1 : Game // test
                 foreach(button button in flip_buttons) {
                     button.collision();
                 }
+                flip_slider.collision();
+                break;
+            case "scale":
+                foreach(button button in delton_buttons) {
+                    button.collision();
+                }
                 break;
             case "deltons":
                 foreach(button button in delton_buttons) {
@@ -235,7 +268,7 @@ public class Game1 : Game // test
                 break;
 
             case "options":
-                Slider.collision();
+                mouse_slider.collision();
                 break;
         }
         
@@ -247,8 +280,6 @@ public class Game1 : Game // test
         else {
             G.mouse_pressed = false;
         }
-
-        Console.WriteLine(Math.Log10(player.Deltons < 10 ? 10 : player.Deltons));
 
         // RENDERING
 
@@ -271,30 +302,32 @@ public class Game1 : Game // test
                 }
                 break;
             case "flips":
-                _spriteBatch.DrawString(G.font,$"you have {G.format(player.Flips,1)} tflips", new Vector2(2,0),G.colors["fg_2"]);
-                if(BigDouble.Log((player.Time/(int)G.conversions.year),5) / Math.Pow(2,player.Scale) - player.Flips > 0) {
-                    _spriteBatch.DrawString(G.font,$"if you flip you'll gain {BigDouble.Round((BigDouble.Log((player.Time/(int)G.conversions.year),5) / Math.Pow(2,player.Scale) - player.Flips) * 100) / 100} tflips", new Vector2(2,10),G.colors["fg_1"]);
+                _spriteBatch.DrawString(G.font,$"you have {G.format(player.Flips,1)} * {Game1.flip_effect} tflips", new Vector2(2,0),G.colors["fg_2"]);
+                if(BigDouble.Log((player.Time/(int)G.conversions.year),5) / BigDouble.Pow(1.5,player.Scale * scale_effect) - player.Flips > 0) {
+                    _spriteBatch.DrawString(G.font,$"if you flip you'll gain {BigDouble.Round((BigDouble.Log((player.Time/(int)G.conversions.year),5) / BigDouble.Pow(1.5,player.Scale * scale_effect) - player.Flips) * 100) / 100} tflips", new Vector2(2,10),G.colors["fg_1"]);
                 }
                 else {
-                    _spriteBatch.DrawString(G.font,$"if you flip you'll lose {BigDouble.Round((player.Flips - BigDouble.Log((player.Time/(int)G.conversions.year),5) / Math.Pow(2,player.Scale)) * 100) / 100} tflips", new Vector2(2,10),G.colors["fg_1"]);
+                    _spriteBatch.DrawString(G.font,$"if you flip you'll lose {BigDouble.Round((player.Flips - BigDouble.Log((player.Time/(int)G.conversions.year),5) / BigDouble.Pow(1.5,player.Scale * scale_effect)) * 100) / 100} tflips", new Vector2(2,10),G.colors["fg_1"]);
                 }
 
                 foreach(button button in flip_buttons) {
                     button.draw(_spriteBatch);
                 }
+                flip_slider.draw(_spriteBatch);
                 break;
             case "scale":
+                _spriteBatch.DrawString(G.font,$"you have {player.Scale} * {scale_effect} scale", new Vector2(2,0),G.colors["fg_2"]);
                 break;
             case "deltons":
                 _spriteBatch.DrawString(G.font,$"you have {player.Deltons} deltons", new Vector2(2,0),G.colors["fg_2"]);
-                _spriteBatch.DrawString(G.font,$"multiplying generators by {Math.Log10(player.Deltons < 10 ? 10 : player.Deltons)}", new Vector2(2,10),G.colors["fg_1"]);
+                _spriteBatch.DrawString(G.font,$"multiplying generators by {BigDouble.Log10(player.Deltons < 10 ? 10 : player.Deltons)}", new Vector2(2,10),G.colors["fg_1"]);
 
                 foreach(button button in delton_buttons) {
                     button.draw(_spriteBatch);
                 }
                 break;
             case "options":
-                Slider.draw(_spriteBatch);
+                mouse_slider.draw(_spriteBatch);
                 _spriteBatch.DrawString(G.font, "options", new Vector2(2,0), G.colors["fg_2"]);
                 break;
         }
@@ -317,7 +350,7 @@ public class Game1 : Game // test
 
         _spriteBatch.Begin(SpriteSortMode.Deferred,null,SamplerState.PointClamp);
         _spriteBatch.Draw(target, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
-        _spriteBatch.Draw(G.mouse_texture,G.mouse.Position.ToVector2(),null,G.colors["accent"],0f,Vector2.Zero,(float)Slider.value,SpriteEffects.None,0f);
+        _spriteBatch.Draw(G.mouse_texture,G.mouse.Position.ToVector2(),null,G.colors["accent"],0f,Vector2.Zero,(float)mouse_slider.value,SpriteEffects.None,0f);
         _spriteBatch.End();
     }
 

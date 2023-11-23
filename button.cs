@@ -50,7 +50,7 @@ namespace Button
 
         public void draw(SpriteBatch spriteBatch) {
             if(!price_side) {
-                price_position = new Vector2(position.X - G.font.MeasureString(G.format(price,0)).X - 2, position.Y+3);
+                price_position = new Vector2(position.X - G.font.MeasureString(G.format(price,currency == "time" ? 0 : 2)).X - 2, position.Y+3);
             }
 
             switch(currency) {
@@ -70,12 +70,28 @@ namespace Button
                         spriteBatch.Draw(texture, position, Color.White);
                     }
                     break;
+                case "deltons":
+                    if(bought_amounts >= cap || price > player.Deltons) {
+                        spriteBatch.Draw(texture_off, position, Color.White);
+                    }
+                    else{
+                        spriteBatch.Draw(texture, position, Color.White);
+                    }
+                    break;
+                case "scale":
+                    if(bought_amounts >= cap || price > player.Scale) {
+                        spriteBatch.Draw(texture_off, position, Color.White);
+                    }
+                    else{
+                        spriteBatch.Draw(texture, position, Color.White);
+                    }
+                    break;
             }
             if(bought_amounts >= cap) {
                 spriteBatch.DrawString(G.font, "capped", price_position, G.colors["fg_2"]);
             }
             else {
-                spriteBatch.DrawString(G.font, G.format(price,0), price_position, G.colors["fg_2"]);
+                spriteBatch.DrawString(G.font, G.format(price, currency == "time" ? 0 : 2 ), price_position, G.colors["fg_2"]);
             }
 
             switch(type)
@@ -103,7 +119,7 @@ namespace Button
                     spriteBatch.DrawString(G.font, text + $" ({Math.Round(player.Generators[3],1)})", text_position, G.colors["fg_1"]);
                     break;
                 case 6: // prestige
-                    spriteBatch.DrawString(G.font, text + $"{G.format(BigDouble.Log((player.Time/(int)G.conversions.year),5) / (Math.Pow(2,player.Scale)),1)})", text_position, G.colors["fg_1"]);
+                    spriteBatch.DrawString(G.font, text + $"{G.format(BigDouble.Log((player.Time/(int)G.conversions.year),5) / (BigDouble.Pow(1.5,player.Scale * Game1.scale_effect)),1)})", text_position, G.colors["fg_1"]);
                     break;
                 case 7: // prestige upgrade 1
                     spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[0]}", text_position, G.colors["fg_1"]);
@@ -129,6 +145,18 @@ namespace Button
                 case 14: // delton upgrade 2
                     spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[7]}", text_position, G.colors["fg_1"]);
                     break;
+                case 15: // prestige upgrade 7
+                    spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[8]}", text_position, G.colors["fg_1"]);
+                    break;
+                case 16: // Delton upgrade 3
+                    spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[9]}", text_position, G.colors["fg_1"]);
+                    break;
+                case 17: // Delton upgrade 4
+                    spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[10]}", text_position, G.colors["fg_1"]);
+                    return;
+                case 18: // Scale upgrade 1
+                    spriteBatch.DrawString(G.font, text + $"{player.FlipUpgrades[11]}", text_position, G.colors["fg_1"]);
+                    return;
             }
         }
         public void collision() {
@@ -152,7 +180,7 @@ namespace Button
                     if(price > player.Time) {
                         return;
                     }
-                    if(!player.FlipUpgrades[5]) {
+                    if(!player.FlipUpgrades[5] || type > 5) {
                         player.Time -= price;
                     }
                     break;
@@ -161,6 +189,18 @@ namespace Button
                         return;
                     }
                     player.Flips -= price;
+                    break;
+                case "deltons":
+                    if(price > player.Deltons) {
+                        return;
+                    }
+                    player.Deltons -= price;
+                    break;
+                case "scale":
+                    if(price > player.Scale) {
+                        return;
+                    }
+                    player.Scale -= price;
                     break;
             }
             price *= price_multiplier;
@@ -192,7 +232,7 @@ namespace Button
                     return;
                 case 6: // prestige
                     player.Time += price;
-                    player.Flips = BigDouble.Log((player.Time/(int)G.conversions.year),5) / (Math.Pow(2,player.Scale));
+                    player.Flips = BigDouble.Log((player.Time/(int)G.conversions.year),5) / (BigDouble.Pow(1.5,player.Scale * Game1.scale_effect));
                     Game1.prestige();
                     return;
                 case 7: // prestige upgrade 1
@@ -219,6 +259,18 @@ namespace Button
                     return;
                 case 14: // delton upgrade 2
                     player.FlipUpgrades[7] = true;
+                    return;
+                case 15: // prestige upgrade 8
+                    player.FlipUpgrades[8] = true;
+                    return;
+                case 16: // Delton upgrade 3
+                    player.FlipUpgrades[9] = true;
+                    return;
+                case 17: // Delton upgrade 4
+                    player.FlipUpgrades[10] = true;
+                    return;
+                case 18: // Scale upgrade 1
+                    player.FlipUpgrades[11] = true;
                     return;
             }
         }

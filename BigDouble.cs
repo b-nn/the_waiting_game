@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Globalization;
 using Random = System.Random;
 
@@ -915,9 +915,13 @@ namespace BreakInfinity
                 }
 
                 var format = places > 0 ? $"G{places}" : "G";
+                if (value.Exponent < 21 && value.Exponent > -7)
+                {
+                    return value.ToDouble().ToString(format, CultureInfo.InvariantCulture);
+                }
 
                 return value.Mantissa.ToString(format, CultureInfo.InvariantCulture)
-                       + "e"
+                       + "E" + (value.Exponent >= 0 ? "+" : "")
                        + value.Exponent.ToString(CultureInfo.InvariantCulture);
             }
 
@@ -942,7 +946,7 @@ namespace BreakInfinity
                 {
                     mantissa = mantissa.TrimEnd('0', '.');
                 }
-                return mantissa + "e" + (value.Exponent >= 0 ? "+" : "")
+                return mantissa + "E" + (value.Exponent >= 0 ? "+" : "")
                        + value.Exponent;
             }
 
