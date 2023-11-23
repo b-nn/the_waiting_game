@@ -22,11 +22,11 @@ namespace Player
         public static BigDouble BaseTimePerSeconds = 1;
         public static BigDouble TotalTimePerSeconds;
         public static List<double> Multipliers = new List<double>();
-        public static BigDouble Flips = 70;
+        public static BigDouble Flips = 0;
         public static BigDouble MaxFlips = 0;
         public static Double[] Generators = {0, 0, 0, 0};
         public static double[] GeneratorEfficiencies = {0.2,0.2,0.2,0.2};
-        public static bool[] FlipUpgrades = {false, false, false, false, false, false, false, false, false, true, false, true};
+        public static bool[] FlipUpgrades = {false, false, false, false, false, false, false, false, false, false, false, false};
         public static double TimeSinceFlip;
     }
 }
